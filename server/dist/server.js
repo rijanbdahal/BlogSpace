@@ -30,7 +30,7 @@ const client = (0, contentful_1.createClient)({
     space: 'b9oig2p1tdgo',
     accessToken: 'Jg4zqce-uLF-LnvALGLBrzJ_4C8S85CoJOxgLWWh3EA'
 });
-app.get('/api/posts', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('https://blogspace-frontend.onrender.com/api/posts', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const entries = yield client.getEntries({
             content_type: 'blogPage',

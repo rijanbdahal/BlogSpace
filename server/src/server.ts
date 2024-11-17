@@ -25,7 +25,7 @@ const client = createClient(
     }
 );
 
-app.get('/api/posts',async(req,res)=>{
+app.get('https://blogspace-frontend.onrender.com/api/posts',async(req,res)=>{
    try{
        const entries = await client.getEntries({
            content_type : 'blogPage',
