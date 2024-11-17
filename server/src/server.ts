@@ -8,7 +8,12 @@ import mongoose from 'mongoose';
 const app = express();
 const PORT = 1111;
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://blogspace-frontend.onrender.com',
+    credentials: true, // Allow cookies
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../../client/build')));
