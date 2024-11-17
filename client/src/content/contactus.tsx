@@ -16,7 +16,7 @@ const Contactus : React.FC = () =>{
     const handleSubmitButton = async (e:React.FormEvent)=>{
         e.preventDefault();
         try {
-            await axios.post('api/contact', formData); // Update the URL if necessary
+            await axios.post('/api/contact', formData); // Update the URL if necessary
             alert("Thank you for contacting us!");
             setFormData({ name: "", email: "", message: "" });
         } catch (error) {

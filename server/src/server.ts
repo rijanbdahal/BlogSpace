@@ -25,7 +25,7 @@ const client = createClient(
     }
 );
 
-app.get('api/posts',async(req,res)=>{
+app.get('/api/posts',async(req,res)=>{
    try{
        const entries = await client.getEntries({
            content_type : 'blogPage',
@@ -50,7 +50,7 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model('Contact',contactSchema);
 
-app.post('api/contact',async(req,res)=>{
+app.post('/api/contact',async(req,res)=>{
     try{
         const newContact = new Contact(req.body);
         const savedContact = await newContact.save();
@@ -72,7 +72,7 @@ const newsLetterSchema = new mongoose.Schema(
 
 const newsLetter = mongoose.model('NewsLetter',newsLetterSchema);
 
-app.post('api/newsletter',async (req,res)=>{
+app.post('/api/newsletter',async (req,res)=>{
    try{
        const newNewsLetter = new newsLetter(req.body);
        const savedNewsLetter = await newNewsLetter.save();
