@@ -84,7 +84,7 @@ app.post('/api/newsletter',async (req,res)=>{
 });
 
 app.get('*', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client/build/static', 'index.html'));
 });
 
 
