@@ -1,19 +1,21 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../logo.png";
 import '../App.css';
-const Header: React.FC = ()=>{
-    return(
+
+const Header: React.FC = () => {
+    return (
         <header className="header">
             <div className="logo">
-                <a href="/">
-                <img src={logo} alt="Logo" className="App-logo"/>
-                </a>
+                <NavLink to="/">
+                    <img src={logo} alt="BlogSpace Logo" className="App-logo" />
+                </NavLink>
             </div>
             <nav>
-                <a href="/">Home </a>
-                <a href="/blogs">Posts</a>
-                <a href="/contactus">Contact Us</a>
-                <a href="/newsletter">News Letter</a>
+                <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
+                <NavLink to="/blogs" className={({ isActive }) => isActive ? "active" : ""}>Posts</NavLink>
+                <NavLink to="/contactus" className={({ isActive }) => isActive ? "active" : ""}>Contact Us</NavLink>
+                <NavLink to="/newsletter" className={({ isActive }) => isActive ? "active" : ""}>News Letter</NavLink>
             </nav>
         </header>
     );
