@@ -16,7 +16,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use(express.static(path.resolve(__dirname, 'client/build')));
 
 const client = createClient(
     {
@@ -30,9 +29,11 @@ app.get('/api/posts',async(req,res)=>{
        const entries = await client.getEntries({
            content_type : 'blogPage',
        })
+       console.log(entries.items);
        res.json(entries.items);
    }
    catch (error){
+       console.error('Error fetching posts:', error);
        res.status(500).json({error: 'Error fetching posts Error:1'})
    }
 });
@@ -81,10 +82,6 @@ app.post('/api/newsletter',async (req,res)=>{
    catch(error){
        res.status(400).json({error: 'Error submitting form data'})
    }
-});
-
-app.get('*', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, './client/build/static', 'index.html'));
 });
 
 

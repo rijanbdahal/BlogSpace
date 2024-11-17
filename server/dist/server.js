@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const node_path_1 = __importDefault(require("node:path"));
 const contentful_1 = require("contentful");
 const mongoose_1 = __importDefault(require("mongoose"));
 const app = (0, express_1.default)();
@@ -25,7 +24,6 @@ const corsOptions = {
 };
 app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
-app.use(express_1.default.static(node_path_1.default.resolve(__dirname, 'client/build')));
 const client = (0, contentful_1.createClient)({
     space: 'b9oig2p1tdgo',
     accessToken: 'Jg4zqce-uLF-LnvALGLBrzJ_4C8S85CoJOxgLWWh3EA'
@@ -35,9 +33,11 @@ app.get('/api/posts', (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const entries = yield client.getEntries({
             content_type: 'blogPage',
         });
+        console.log(entries.items);
         res.json(entries.items);
     }
     catch (error) {
+        console.error('Error fetching posts:', error);
         res.status(500).json({ error: 'Error fetching posts Error:1' });
     }
 }));
@@ -77,9 +77,6 @@ app.post('/api/newsletter', (req, res) => __awaiter(void 0, void 0, void 0, func
         res.status(400).json({ error: 'Error submitting form data' });
     }
 }));
-app.get('*', (req, res) => {
-    res.sendFile(node_path_1.default.join(__dirname, './client/build/static', 'index.html'));
-});
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
