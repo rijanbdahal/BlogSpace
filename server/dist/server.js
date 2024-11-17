@@ -78,7 +78,7 @@ app.post('/api/newsletter', (req, res) => __awaiter(void 0, void 0, void 0, func
     }
 }));
 app.get('*', (req, res) => {
-    res.sendFile(node_path_1.default.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(node_path_1.default.join(__dirname, 'client/build/static', 'index.html'));
 });
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
