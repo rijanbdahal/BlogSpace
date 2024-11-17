@@ -9,7 +9,7 @@ const app = express();
 const PORT = 1111;
 
 const corsOptions = {
-    origin: 'https://blogspace-frontend.onrender.com',
+    origin: '*',
     credentials: true, // Allow cookies
 };
 
