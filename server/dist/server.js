@@ -19,9 +19,13 @@ const contentful_1 = require("contentful");
 const mongoose_1 = __importDefault(require("mongoose"));
 const app = (0, express_1.default)();
 const PORT = 1111;
-app.use((0, cors_1.default)());
+const corsOptions = {
+    origin: 'https://blogspace-frontend.onrender.com',
+    credentials: true, // Allow cookies
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
-app.use(express_1.default.static(node_path_1.default.join(__dirname, '../../client/build')));
+app.use(express_1.default.static(node_path_1.default.resolve(__dirname, 'client/build')));
 const client = (0, contentful_1.createClient)({
     space: 'b9oig2p1tdgo',
     accessToken: 'Jg4zqce-uLF-LnvALGLBrzJ_4C8S85CoJOxgLWWh3EA'
