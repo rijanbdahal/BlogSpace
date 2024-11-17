@@ -30,7 +30,7 @@ const client = (0, contentful_1.createClient)({
     space: 'b9oig2p1tdgo',
     accessToken: 'Jg4zqce-uLF-LnvALGLBrzJ_4C8S85CoJOxgLWWh3EA'
 });
-app.get('/api/posts', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('api/posts', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const entries = yield client.getEntries({
             content_type: 'blogPage',
@@ -50,7 +50,7 @@ const contactSchema = new mongoose_1.default.Schema({
     message: { type: String, required: true }
 });
 const Contact = mongoose_1.default.model('Contact', contactSchema);
-app.post('/api/contact', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post('api/contact', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const newContact = new Contact(req.body);
         const savedContact = yield newContact.save();
@@ -67,7 +67,7 @@ const newsLetterSchema = new mongoose_1.default.Schema({
     receiveemails: { type: String, required: true }
 });
 const newsLetter = mongoose_1.default.model('NewsLetter', newsLetterSchema);
-app.post('/api/newsletter', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post('api/newsletter', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const newNewsLetter = new newsLetter(req.body);
         const savedNewsLetter = yield newNewsLetter.save();

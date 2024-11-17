@@ -40,7 +40,7 @@ const Blogs: React.FC = () => {
     useEffect(() => {
         // Fetch blog posts from the API
         axios
-            .get('/api/posts')
+            .get('api/posts')
             .then((response) => {
                 setPosts(response.data);
             })

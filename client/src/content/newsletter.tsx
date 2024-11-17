@@ -24,7 +24,7 @@ const Newsletter: React.FC = () => {
     const handleSubmitButton = async (e: React.FormEvent) => {
         e.preventDefault();
         try{
-            await axios.post('/api/newsletter',formData);
+            await axios.post('api/newsletter',formData);
             alert("Thank you for subscribing to our newsletter");
             setFormData({name:"",email:"",phonenumber:"",receiveemails:""});
         }
